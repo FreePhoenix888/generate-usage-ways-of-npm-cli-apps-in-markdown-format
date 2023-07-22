@@ -35,6 +35,7 @@ Add the following to your README.md
 <!-- CLI_USAGE_WAYS_END -->
 ```
 ## JavaScript
+Run this javascript code
 ```javascript
 const fs = require('fs').promises;
 const {generateUsageWaysOfNpmCliApps} = require('@freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format');
@@ -46,6 +47,7 @@ const newReadme = readme.replace(pattern, replacement);
 await fs.writeFile('README.md', newReadme);
 ```
 ## Bash
+Run this bash script
 ```bash
 cli_usage_ways=$(npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format  --root-header-level 2)
 pattern="(<!-- CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- CLI_USAGE_WAYS_END -->)"
