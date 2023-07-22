@@ -8,21 +8,22 @@ Generates the ways to use CLI utilities of the package
 <!-- TABLE_OF_CONTENTS_START -->
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
-  - [Pre-requisites](#pre-requisites)
-  - [JavaScript](#javascript)
-  - [Bash](#bash)
+  * [Pre-requisites](#pre-requisites)
+  * [JavaScript](#javascript)
+  * [Bash](#bash)
 - [What can it be used for?](#what-can-it-be-used-for)
 - [Library](#library)
 - [Cli](#cli)
-  - [Cli Usage](#cli-usage)
-  - [Cli Usage Ways](#cli-usage-ways)
+  * [Cli Usage](#cli-usage)
+    + [`generate-usage-ways-of-npm-cli-apps-in-markdown-format`](#generate-usage-ways-of-npm-cli-apps-in-markdown-format)
+  * [Cli Usage Ways](#cli-usage-ways)
       - [Directly running using npx](#directly-running-using-npx)
       - [Global Installation](#global-installation)
-        - [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
-        - [Global installation and running using npx](#global-installation-and-running-using-npx)
+        * [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
+        * [Global installation and running using npx](#global-installation-and-running-using-npx)
       - [Local installation](#local-installation)
-        - [Local installation and running using npx](#local-installation-and-running-using-npx)
-        - [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
+        * [Local installation and running using npx](#local-installation-and-running-using-npx)
+        * [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
 <!-- TABLE_OF_CONTENTS_END -->
 
 # Quick Start
@@ -65,6 +66,25 @@ See [Documentation] for examples and API
 
 ## Cli Usage
 <!-- CLI_HELP_START -->
+
+### `generate-usage-ways-of-npm-cli-apps-in-markdown-format`
+```
+generate-usage-ways-of-npm-cli-apps-in-markdown-format [Options]
+
+Generates usage ways of CLI applications of npm package in markdown format
+
+Options:
+  --version            Show version number                             [boolean]
+  --package-name       Name of the package
+                [string] [default: Name of the package in the current directory]
+  --cli-utility-names  Names of the CLI utilities
+  [array] [default: Keys of the bin property of package.json in the current dire
+                                                                          ctory]
+  --root-header-level  Header level of the root header. Example: If you want gen
+                       erated headers to have 4 hashes, then specify 3 here
+                                                           [number] [default: 3]
+  --help               Show help                                       [boolean]
+```
 <!-- CLI_HELP_END -->
 
 ## Cli Usage Ways
