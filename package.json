@@ -1,0 +1,39 @@
+{
+  "name": "@freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format",
+  "version": "0.0.1-dev.0",
+  "description": "Generates usage ways of CLI applications of npm package in markdown format",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "bin": {
+    "generate-usage-ways-of-npm-cli-apps-in-markdown-format": "dist/cli/generate-usage-ways-of-npm-cli-apps-in-markdown-format.js"
+  },
+  "repository": {
+    "url": "https://github.com/FreePhoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "cli-usage",
+    "automation",
+    "generation",
+    "markdown-generation"
+  ],
+  "author": "FreePhoenix888",
+  "license": "Unlicense",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.4.2",
+    "@types/yargs": "^17.0.24",
+    "types-package-json": "^2.0.39",
+    "typescript": "^5.1.6"
+  }
+}
