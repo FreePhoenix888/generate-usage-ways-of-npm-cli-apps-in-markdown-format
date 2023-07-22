@@ -19,6 +19,7 @@ jobs:
       test-command: "echo 'Tests are temporarily disabled'"
       should-generate-documentation: true
       generate-documentation-command: |
+        chmod +x ./dist/cli/generate-usage-ways-of-npm-cli-apps-in-markdown-format.js
         cli_usage_ways=$(node ./dist/cli/generate-usage-ways-of-npm-cli-apps-in-markdown-format.js --root-header-level 2)
         pattern='(<!-- ACTUAL_CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- ACTUAL_CLI_USAGE_WAYS_END -->)'
         replacement=$'$1\n'"${cli_usage_ways}"$'\n$2'
