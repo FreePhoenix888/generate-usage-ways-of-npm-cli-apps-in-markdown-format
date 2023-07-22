@@ -8,21 +8,50 @@ Generates the ways to use CLI utilities of the package
 <!-- TABLE_OF_CONTENTS_START -->
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
+  - [Pre-requisites](#pre-requisites)
+  - [JavaScript](#javascript)
+  - [Bash](#bash)
 - [What can it be used for?](#what-can-it-be-used-for)
 - [Library](#library)
 - [Cli](#cli)
-  * [Cli Usage Ways](#cli-usage-ways)
+  - [Cli Usage](#cli-usage)
+  - [Cli Usage Ways](#cli-usage-ways)
       - [Directly running using npx](#directly-running-using-npx)
       - [Global Installation](#global-installation)
-        * [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
-        * [Global installation and running using npx](#global-installation-and-running-using-npx)
+        - [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
+        - [Global installation and running using npx](#global-installation-and-running-using-npx)
       - [Local installation](#local-installation)
-        * [Local installation and running using npx](#local-installation-and-running-using-npx)
-        * [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
+        - [Local installation and running using npx](#local-installation-and-running-using-npx)
+        - [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
 <!-- TABLE_OF_CONTENTS_END -->
 
 # Quick Start
-Run `npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format` in the npm package directory
+## Pre-requisites
+Add the following to your README.md
+```markdown
+# Cli
+## Cli Usage Ways
+<!-- CLI_USAGE_WAYS_START -->
+<!-- CLI_USAGE_WAYS_END -->
+```
+## JavaScript
+```javascript
+const fs = require('fs').promises;
+const {generateUsageWaysOfNpmCliApps} = require('@freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format');
+const generatedUsageWays = await generateUsageWaysOfNpmCliApps();
+const readme = await fs.readFile('README.md', 'utf8');
+const pattern = /(<!-- CLI_USAGE_WAYS_START -->)[\S\s]*(<!-- CLI_USAGE_WAYS_END -->)/;
+const replacement = '$1\n' + generatedUsageWays + '\n$2';
+const newReadme = readme.replace(pattern, replacement);
+await fs.writeFile('README.md', newReadme);
+```
+## Bash
+```bash
+cli_usage_ways=$(npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format  --root-header-level 2)
+pattern="(<!-- CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- CLI_USAGE_WAYS_END -->)"
+replacement=$'$1\n'"${cli_usage_ways}"$'\n$2'
+npx --yes replace "$pattern" "$replacement" README.md
+```
 
 # What can it be used for?
 Generate CLI usage ways and place it in the README.md file of your npm package which provides CLI utilities
@@ -40,7 +69,7 @@ See [Documentation] for examples and API
 
 ## Cli Usage Ways
 <!-- Do not remove these comments because they are used for automatic generation -->
-<!-- CLI_USAGE_WAYS_START -->
+<!-- ACTUAL_CLI_USAGE_WAYS_START -->
 If you are going to use this package in a project - it is recommended to install it is [Locally](#local-installation)  
 If you are going to use this package for yourself - it is recommended to install it [Globally](#global-installation) or run it directly using [npx](#directly-running-using-npx)
 #### Directly running using npx
@@ -85,7 +114,7 @@ and run
 ```shell
 npm run generate-usage-ways-of-npm-cli-apps-in-markdown-format
 ```
-  <!-- CLI_USAGE_WAYS_END -->
+  <!-- ACTUAL_CLI_USAGE_WAYS_END -->
   
 
 

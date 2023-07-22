@@ -20,7 +20,7 @@ jobs:
       should-generate-documentation: true
       generate-documentation-command: |
         cli_usage_ways=$(node ./dist/cli/generate-usage-ways-of-npm-cli-apps-in-markdown-format.js --root-header-level 2)
-        pattern='(<!-- CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- CLI_USAGE_WAYS_END -->)'
+        pattern='(<!-- ACTUAL_CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- ACTUAL_CLI_USAGE_WAYS_END -->)'
         replacement=$'$1\n'"${cli_usage_ways}"$'\n$2'
         npx --yes replace "$pattern" "$replacement" README.md
 
