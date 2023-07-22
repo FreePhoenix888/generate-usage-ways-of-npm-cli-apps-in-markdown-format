@@ -34,6 +34,10 @@ See [Documentation] for examples and API
 
 # Cli
 
+## Cli Usage
+<!-- CLI_HELP_START -->
+<!-- CLI_HELP_END -->
+
 ## Cli Usage Ways
 <!-- Do not remove these comments because they are used for automatic generation -->
 <!-- CLI_USAGE_WAYS_START -->
