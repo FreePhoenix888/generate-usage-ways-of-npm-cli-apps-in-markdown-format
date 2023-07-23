@@ -28,13 +28,17 @@ Generates the ways to use CLI utilities of the package
 
 # Quick Start
 ## Pre-requisites
-Add the following to your README.md
-```markdown
-# Cli
-## Cli Usage Ways
-<!-- CLI_USAGE_WAYS_START -->
-<!-- CLI_USAGE_WAYS_END -->
-```
+- Add the following to your README.md
+  ```markdown
+  # Cli
+  ## Cli Usage Ways
+  <!-- CLI_USAGE_WAYS_START -->
+  <!-- CLI_USAGE_WAYS_END -->
+  ```
+- Allow execution of your cli utilities. For example in bash you can do it like this
+  ```bash
+  find ./dist/cli/ -name "*.js" -exec chmod +x {} \;
+  ```
 ## JavaScript
 Run this javascript code
 ```javascript
@@ -51,6 +55,7 @@ writeFileSync('README.md', newReadme);
 ## Bash
 Run this bash script
 ```bash
+find ./dist/cli/ -name "*.js" -exec chmod +x {} \;
 cli_usage_ways=$(npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format  --root-header-level 2)
 pattern="(<!-- CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- CLI_USAGE_WAYS_END -->)"
 replacement=$'$1\n'"${cli_usage_ways}"$'\n$2'
