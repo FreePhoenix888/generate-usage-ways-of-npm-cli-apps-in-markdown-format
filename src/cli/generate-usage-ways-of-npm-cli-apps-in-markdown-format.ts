@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
     defaultDescription: 'Keys of the bin property of package.json in the current directory',
   })
   .option('root-header-level', {
-    description: 'Header level of the root header. Example: If you want generated headers to have 4 hashes, then specify 3 here',
+    description: 'Header level of the root header. Example: If you want generated headers to have 4 hashes, then specify 4 here',
     type: 'number',
     default: 3,
   })

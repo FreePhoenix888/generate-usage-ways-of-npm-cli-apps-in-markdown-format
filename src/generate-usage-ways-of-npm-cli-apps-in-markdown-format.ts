@@ -17,7 +17,7 @@ export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
    */
   cliUtilityNames?: Array<string>; 
   /**
-   * Header level of the root header. Example: If you want generated headers to have 4 hashes, then specify 3 here
+   * Header level of the root header. Example: If you want generated headers to have 4 hashes, then specify 4 here
    * 
    * @defaultValue
    * 3
@@ -29,7 +29,7 @@ export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
  * Generates usage ways of CLI applications of npm package in markdown format
  */
 export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions) {
-  const rootHeaderLevel = options.rootHeaderLevel ?? 2;
+  const rootHeaderLevel = options.rootHeaderLevel ?? 3;
 
   const cliUtilityNames: Array<string> = options.cliUtilityNames ?? await fsExtra.readJson('./package.json').catch((error) => {
     throw new Error(`Either specify cliUtilities in options or make sure that package.json exists in the current directory. Error: ${error}`)
@@ -49,7 +49,7 @@ export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: Gen
   const allHelpMessages = `
 If you are going to use this package in a project - it is recommended to install it is [Locally](#local-installation)  
 If you are going to use this package for yourself - it is recommended to install it [Globally](#global-installation) or run it directly using [npx](#directly-running-using-npx)
-${`#`.repeat(rootHeaderLevel+1)} Directly running using npx
+${`#`.repeat(rootHeaderLevel)} Directly running using npx
 ${
   cliUtilityNames.length > 1 ? `
 \`\`\`shell
@@ -66,8 +66,8 @@ npx --yes ${packageName}
 `.trim()
 }
 
-#### Global Installation
-##### Global installation and running using binary name
+${`#`.repeat(rootHeaderLevel)} Global Installation
+${`#`.repeat(rootHeaderLevel+1)} Global installation and running using binary name
 \`\`\`shell
 npm install --global ${packageName}
 ${
@@ -77,7 +77,7 @@ ${
 }
 \`\`\`
 
-##### Global installation and running using npx
+${`#`.repeat(rootHeaderLevel+1)} Global installation and running using npx
 \`\`\`shell
 npm install --global ${packageName}
 ${
@@ -87,9 +87,9 @@ ${
 }
 \`\`\`
 
-#### Local installation
+${`#`.repeat(rootHeaderLevel)} Local installation
 
-##### Local installation and running using npx
+${`#`.repeat(rootHeaderLevel+1)} Local installation and running using npx
 \`\`\`shell
 npm install ${packageName}
 ${
@@ -99,7 +99,7 @@ ${
 }
 \`\`\`
 
-##### Local installation and running using npm script
+${`#`.repeat(rootHeaderLevel+1)} Local installation and running using npm script
 \`\`\`shell
 npm install ${packageName}
 \`\`\`
