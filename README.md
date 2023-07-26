@@ -89,7 +89,7 @@ Options:
   [array] [default: Keys of the bin property of package.json in the current dire
                                                                           ctory]
   --root-header-level  Header level of the root header. Example: If you want gen
-                       erated headers to have 4 hashes, then specify 3 here
+                       erated headers to have 4 hashes, then specify 4 here
                                                            [number] [default: 3]
   --help               Show help                                       [boolean]
 ```
