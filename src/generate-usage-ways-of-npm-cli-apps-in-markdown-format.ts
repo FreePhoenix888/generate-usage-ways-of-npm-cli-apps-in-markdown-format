@@ -1,7 +1,7 @@
 import fsExtra from 'fs-extra';
 import { type PackageJson } from 'types-package-json';
 
-export interface generateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
+export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
   /**
    * Name of the package
    * 
@@ -28,7 +28,7 @@ export interface generateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
 /**
  * Generates usage ways of CLI applications of npm package in markdown format
  */
-export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: generateUsageWaysOfNpmCliAppsInMarkdownFormatOptions) {
+export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions) {
   const rootHeaderLevel = options.rootHeaderLevel ?? 2;
 
   const cliUtilityNames: Array<string> = options.cliUtilityNames ?? await fsExtra.readJson('./package.json').catch((error) => {
