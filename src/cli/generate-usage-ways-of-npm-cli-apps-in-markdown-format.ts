@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
-import { generateUsageWaysOfNpmCliApps } from '../generate-usage-ways-of-npm-cli-apps-in-markdown-format.js';
+import { generateUsageWaysOfNpmCliAppsInMarkdownFormat } from '../generate-usage-ways-of-npm-cli-apps-in-markdown-format.js';
 import { hideBin } from 'yargs/helpers';
 
 const argv = yargs(hideBin(process.argv))
@@ -24,7 +24,7 @@ const argv = yargs(hideBin(process.argv))
   .help()
   .parseSync();
 
-generateUsageWaysOfNpmCliApps({
+generateUsageWaysOfNpmCliAppsInMarkdownFormat({
   ...argv,
   cliUtilityNames: argv.cliUtilityNames,
 }).then(console.log)
