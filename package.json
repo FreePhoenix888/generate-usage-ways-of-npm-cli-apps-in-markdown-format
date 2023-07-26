@@ -1,6 +1,6 @@
 {
   "name": "@freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Generates usage ways of CLI applications of npm package in markdown format",
   "type": "module",
   "main": "dist/main.js",
