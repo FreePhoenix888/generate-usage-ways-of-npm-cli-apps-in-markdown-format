@@ -1,1 +1,1 @@
-export { generateUsageWaysOfNpmCliAppsInMarkdownFormat, type GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions } from "./generate-usage-ways-of-npm-cli-apps-in-markdown-format";
+export { generateUsageWaysOfNpmCliAppsInMarkdownFormat, type GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions } from "./generate-usage-ways-of-npm-cli-apps-in-markdown-format.js";
