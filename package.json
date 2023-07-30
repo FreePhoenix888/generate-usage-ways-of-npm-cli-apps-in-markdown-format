@@ -12,7 +12,11 @@
     "url": "https://github.com/FreePhoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format"
   },
   "scripts": {
-    "build": "tsc"
+    "library:build:clean": "fse remove dist && npm run library:build:dirty",
+    "library:build:dirty": "ts-node --esm ./automation/library/build.ts",
+    "library:build:generate-package-class": "generate-package-class",
+    "documentation:generate": "cross-env DEBUG=* ts-node --esm ./automation/documentation/generate.ts",
+    "library:documentation:generate": "typedoc ./src/main.ts"
   },
   "keywords": [
     "cli-usage",
