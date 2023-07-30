@@ -29,7 +29,9 @@ await generateUsageWaysOfNpmCliAppsInMarkdownFormat({})
 ```
 
 # What can it be used for?
-Generate usage ways of npm package which provides CLI utilities in markdown format
+You can use it to generate usage ways of npm package which provides CLI utilities in markdown format. For example for README.md files
+
+
 
 
 # Library
