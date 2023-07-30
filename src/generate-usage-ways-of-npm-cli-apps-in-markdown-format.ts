@@ -1,5 +1,6 @@
 import fsExtra from 'fs-extra';
 import { type PackageJson } from 'types-package-json';
+import debug from 'debug';
 
 export interface BaseOutputOptions {
   /**
@@ -69,7 +70,9 @@ export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
  * Generates usage ways of CLI applications of npm package in markdown format
  */
 export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions) {
+  const log = debug(generateUsageWaysOfNpmCliAppsInMarkdownFormat.name);
   const rootHeaderLevel = options.rootHeaderLevel ?? 3;
+  log({rootHeaderLevel})
 
   const cliUtilityNames: Array<string> = options.cliUtilityNames ?? await fsExtra.readJson('./package.json').catch((error) => {
     throw new Error(`Either specify cliUtilities in options or make sure that package.json exists in the current directory. Error: ${error}`)
@@ -79,10 +82,12 @@ export async function generateUsageWaysOfNpmCliAppsInMarkdownFormat(options: Gen
     }
     return Object.keys(packageJson.bin)
   });
+  log({cliUtilityNames})
 
   const packageName = await fsExtra.readJson('./package.json').catch((error) => {
     throw new Error(`Either specify packageName in options or make sure that package.json exists in the current directory. Error: ${error}`)
   }).then((packageJson: PackageJson) => packageJson.name);
+  log({packageName})
 
   // Prepare a place to collect all help messages
 
@@ -164,23 +169,27 @@ ${
 }
 \`\`\`
 `.trim()
+log({allHelpMessages})
 
   if(options.output) {
     if(options.output.writeMode === 'replace-placeholder') {
       const placeholderStart = options.output.placeholder.start;
+      log({placeholderStart})
       const placeholderEnd = options.output.placeholder.end;
-      const placeholderRegex = new RegExp(`${placeholderStart}[\S\s]*${placeholderEnd}`, 'g');
+      log({placeholderEnd})
+      const placeholderRegex = new RegExp(`${placeholderStart}[\\S\\s]*${placeholderEnd}`, 'g');
+      log({placeholderRegex})
       const filePath = options.output.filePath;
+      log({filePath})
       const markdown = fsExtra.readFileSync(filePath, 'utf-8');
+      log({markdown})
       const newFileContents = markdown.replace(placeholderRegex, `${placeholderStart}\n${allHelpMessages}\n${placeholderEnd}`);
+      log({newFileContents})
       fsExtra.writeFileSync(filePath, newFileContents)
-    } else  {
-      const fileContents = fsExtra.readFileSync(options.output.filePath, 'utf-8');
-      if(options.output.writeMode === 'append') {
-        fsExtra.appendFileSync(options.output.filePath, `${fileContents}\n${allHelpMessages}`)
-      } else if(options.output.writeMode === 'overwrite') {
-        fsExtra.writeFileSync(options.output.filePath, allHelpMessages)
-      }
+    } else if(options.output.writeMode === 'append') {
+      fsExtra.appendFileSync(options.output.filePath, allHelpMessages)
+    } else if(options.output.writeMode === 'overwrite') {
+      fsExtra.writeFileSync(options.output.filePath, allHelpMessages)
     }
   }
   

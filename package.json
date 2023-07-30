@@ -49,12 +49,14 @@
     "dist"
   ],
   "dependencies": {
+    "debug": "^4.3.4",
     "fs-extra": "^11.1.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@atao60/fse-cli": "^0.1.7",
     "@deep-foundation/npm-automation": "^16.0.0",
+    "@types/debug": "^4.1.8",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.2",
     "@types/yargs": "^17.0.24",
