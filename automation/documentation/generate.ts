@@ -10,5 +10,7 @@ async function main() {
   for (const cliAppFilePath of cliAppFilePaths) {
     fsExtra.chmodSync(cliAppFilePath, '755');
   }
-  await generateDocumentation({})
+  await generateDocumentation({
+    generateUsageWaysOfNpmCliAppsInMarkdownFormatOptions: null
+  })
 };
