@@ -9,7 +9,9 @@ Generates the ways to use CLI utilities of the package
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
   - [Pre-requisites](#pre-requisites)
-- [What can it be used for?](#what-can-it-be-used-for)
+- [Cli](#cli)
+  - [Cli Usage Ways](#cli-usage-ways)
+- [What can it be used for?](#what-can-it-be-used-for?)
 - [Library](#library)
 
 <!-- TABLE_OF_CONTENTS_END -->
@@ -21,7 +23,51 @@ Generates the ways to use CLI utilities of the package
   # Cli
   ## Cli Usage Ways
   <!-- CLI_USAGE_WAYS_START -->
-  <!-- CLI_USAGE_WAYS_END -->
+If you are going to use this package in a project - it is recommended to install it is [Locally](#local-installation)  
+If you are going to use this package for yourself - it is recommended to install it [Globally](#global-installation) or run it directly using [npx](#directly-running-using-npx)
+### Directly running using npx
+```shell
+npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+```
+
+### Global Installation
+#### Global installation and running using binary name
+```shell
+npm install --global @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+#### Global installation and running using npx
+```shell
+npm install --global @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+### Local installation
+
+#### Local installation and running using npx
+```shell
+npm install @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+#### Local installation and running using npm script
+```shell
+npm install @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+```
+Add npm script to package.json. Note that you can name  your script as you want but it must call binary file provided by the package
+```json
+{
+  "scripts": {
+
+  }
+}
+```
+and run
+```shell
+
+```
+<!-- CLI_USAGE_WAYS_END -->
   ```
 - Run this javascript code
 ```javascript
