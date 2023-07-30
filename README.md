@@ -8,22 +8,25 @@ Generates the ways to use CLI utilities of the package
 <!-- TABLE_OF_CONTENTS_START -->
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
-  * [Pre-requisites](#pre-requisites)
-  * [JavaScript](#javascript)
-  * [Bash](#bash)
-- [What can it be used for?](#what-can-it-be-used-for)
+  - [Pre-requisites](#pre-requisites)
+- [Cli](#cli)
+  - [Cli Usage Ways](#cli-usage-ways)
+  - [JavaScript](#javascript)
+  - [Bash](#bash)
+- [What can it be used for?](#what-can-it-be-used-for?)
 - [Library](#library)
 - [Cli](#cli)
-  * [Cli Usage](#cli-usage)
-    + [`generate-usage-ways-of-npm-cli-apps-in-markdown-format`](#generate-usage-ways-of-npm-cli-apps-in-markdown-format)
-  * [Cli Usage Ways](#cli-usage-ways)
+  - [Cli Usage](#cli-usage)
+    - [`generate-usage-ways-of-npm-cli-apps-in-markdown-format`](#`generate-usage-ways-of-npm-cli-apps-in-markdown-format`)
+  - [Cli Usage Ways](#cli-usage-ways)
       - [Directly running using npx](#directly-running-using-npx)
       - [Global Installation](#global-installation)
-        * [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
-        * [Global installation and running using npx](#global-installation-and-running-using-npx)
+        - [Global installation and running using binary name](#global-installation-and-running-using-binary-name)
+        - [Global installation and running using npx](#global-installation-and-running-using-npx)
       - [Local installation](#local-installation)
-        * [Local installation and running using npx](#local-installation-and-running-using-npx)
-        * [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
+        - [Local installation and running using npx](#local-installation-and-running-using-npx)
+        - [Local installation and running using npm script](#local-installation-and-running-using-npm-script)
+
 <!-- TABLE_OF_CONTENTS_END -->
 
 # Quick Start
@@ -33,31 +36,51 @@ Generates the ways to use CLI utilities of the package
   # Cli
   ## Cli Usage Ways
   <!-- CLI_USAGE_WAYS_START -->
-  <!-- CLI_USAGE_WAYS_END -->
-  ```
-- Allow execution of your cli utilities. For example in bash you can do it like this
-  ```bash
-  find ./dist/cli/ -name "*.js" -exec chmod +x {} \;
-  ```
-## JavaScript
-Run this javascript code
-```javascript
-import {readFileSync, writeFileSync} from 'fs';
-import {generateUsageWaysOfNpmCliApps} from '@freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format';
-
-const generatedUsageWays = generateUsageWaysOfNpmCliApps();
-const readme = readFileSync('README.md', 'utf8');
-const pattern = /(<!-- CLI_USAGE_WAYS_START -->)[\S\s]*(<!-- CLI_USAGE_WAYS_END -->)/;
-const replacement = '$1\n' + generatedUsageWays + '\n$2';
-const newReadme = readme.replace(pattern, replacement);
-writeFileSync('README.md', newReadme);
+If you are going to use this package in a project - it is recommended to install it is [Locally](#local-installation)  
+If you are going to use this package for yourself - it is recommended to install it [Globally](#global-installation) or run it directly using [npx](#directly-running-using-npx)
+### Directly running using npx
+```shell
+npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
 ```
-## Bash
-Run this bash script
-```bash
-find ./dist/cli/ -name "*.js" -exec chmod +x {} \;
-cli_usage_ways=$(npx --yes @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format  --root-header-level 2)
-pattern="(<!-- CLI_USAGE_WAYS_START -->)[\\S\\s]*(<!-- CLI_USAGE_WAYS_END -->)"
+
+### Global Installation
+#### Global installation and running using binary name
+```shell
+npm install --global @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+#### Global installation and running using npx
+```shell
+npm install --global @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+### Local installation
+
+#### Local installation and running using npx
+```shell
+npm install @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+
+```
+
+#### Local installation and running using npm script
+```shell
+npm install @freephoenix888/generate-usage-ways-of-npm-cli-apps-in-markdown-format
+```
+Add npm script to package.json. Note that you can name  your script as you want but it must call binary file provided by the package
+```json
+{
+  "scripts": {
+
+  }
+}
+```
+and run
+```shell
+
+```
+<!-- CLI_USAGE_WAYS_END -->)"
 replacement=$'$1\n'"${cli_usage_ways}"$'\n$2'
 npx --yes replace "$pattern" "$replacement" README.md
 ```
@@ -75,24 +98,6 @@ See [Documentation] for examples and API
 ## Cli Usage
 <!-- CLI_HELP_START -->
 
-### `generate-usage-ways-of-npm-cli-apps-in-markdown-format`
-```
-generate-usage-ways-of-npm-cli-apps-in-markdown-format [Options]
-
-Generates usage ways of CLI applications of npm package in markdown format
-
-Options:
-  --version            Show version number                             [boolean]
-  --package-name       Name of the package
-                [string] [default: Name of the package in the current directory]
-  --cli-utility-names  Names of the CLI utilities
-  [array] [default: Keys of the bin property of package.json in the current dire
-                                                                          ctory]
-  --root-header-level  Header level of the root header. Example: If you want gen
-                       erated headers to have 4 hashes, then specify 4 here
-                                                           [number] [default: 3]
-  --help               Show help                                       [boolean]
-```
 <!-- CLI_HELP_END -->
 
 ## Cli Usage Ways
