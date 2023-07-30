@@ -54,9 +54,11 @@
   },
   "devDependencies": {
     "@atao60/fse-cli": "^0.1.7",
+    "@deep-foundation/npm-automation": "^16.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.2",
     "@types/yargs": "^17.0.24",
+    "glob": "^10.3.3",
     "ts-node": "^10.9.1",
     "types-package-json": "^2.0.39",
     "typescript": "^5.1.6"
