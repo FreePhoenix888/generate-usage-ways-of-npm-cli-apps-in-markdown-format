@@ -9,7 +9,9 @@ Generates the ways to use CLI utilities of the package
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
   - [Pre-requisites](#pre-requisites)
-- [What can it be used for?](#what-can-it-be-used-for)
+- [Cli](#cli)
+  - [Cli Usage Ways](#cli-usage-ways)
+- [What can it be used for?](#what-can-it-be-used-for?)
 - [Library](#library)
 
 <!-- TABLE_OF_CONTENTS_END -->
