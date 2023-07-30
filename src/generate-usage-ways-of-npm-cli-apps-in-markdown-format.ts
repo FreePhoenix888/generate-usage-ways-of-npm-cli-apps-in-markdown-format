@@ -1,6 +1,42 @@
 import fsExtra from 'fs-extra';
 import { type PackageJson } from 'types-package-json';
 
+export interface BaseOutputOptions {
+  /**
+   * Path of the file to write the table of contents to
+   */
+  filePath: string;
+}
+
+export interface WriteModeOptions {
+  /**
+   * Write mode for the output
+   */
+  writeMode: 'overwrite' | 'append' | 'replace-placeholder';
+}
+
+export interface OutputOptionsWithoutPlaceholder extends BaseOutputOptions, WriteModeOptions {
+  writeMode: 'overwrite' | 'append';
+}
+
+export interface Placeholder {
+  /**
+   * Start of the placeholder text
+   */
+  start: string;
+  /**
+   * End of the placeholder text
+   */
+  end: string;
+}
+
+export interface OutputOptionsWithPlaceholder extends BaseOutputOptions, WriteModeOptions {
+  writeMode: 'replace-placeholder';
+  placeholder: Placeholder;
+}
+
+export type OutputOptions = OutputOptionsWithoutPlaceholder | OutputOptionsWithPlaceholder;
+
 export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
   /**
    * Name of the package
@@ -23,6 +59,10 @@ export interface GenerateUsageWaysOfNpmCliAppsInMarkdownFormatOptions {
    * 3
    */
   rootHeaderLevel?: number;
+  /**
+   * Output options
+   */
+  output?: OutputOptions;
 }
 
 /**
@@ -124,6 +164,25 @@ ${
 }
 \`\`\`
 `.trim()
+
+  if(options.output) {
+    if(options.output.writeMode === 'replace-placeholder') {
+      const placeholderStart = options.output.placeholder.start;
+      const placeholderEnd = options.output.placeholder.end;
+      const placeholderRegex = new RegExp(`${placeholderStart}[\S\s]*${placeholderEnd}`, 'g');
+      const filePath = options.output.filePath;
+      const markdown = fsExtra.readFileSync(filePath, 'utf-8');
+      const newFileContents = markdown.replace(placeholderRegex, `${placeholderStart}\n${allHelpMessages}\n${placeholderEnd}`);
+      fsExtra.writeFileSync(filePath, newFileContents)
+    } else  {
+      const fileContents = fsExtra.readFileSync(options.output.filePath, 'utf-8');
+      if(options.output.writeMode === 'append') {
+        fsExtra.appendFileSync(options.output.filePath, `${fileContents}\n${allHelpMessages}`)
+      } else if(options.output.writeMode === 'overwrite') {
+        fsExtra.writeFileSync(options.output.filePath, allHelpMessages)
+      }
+    }
+  }
   
   return allHelpMessages
 }
