@@ -8,14 +8,12 @@ Generates the ways to use CLI utilities of the package
 <!-- TABLE_OF_CONTENTS_START -->
 - [Table Of Contents](#table-of-contents)
 - [Quick Start](#quick-start)
-  - [Pre-requisites](#pre-requisites)
-- [What can it be used for?](#what-can-it-be-used-for?)
+- [What can it be used for?](#what-can-it-be-used-for)
 - [Library](#library)
 
 <!-- TABLE_OF_CONTENTS_END -->
 
 # Quick Start
-## Pre-requisites
 - Add the following to your README.md
   ```markdown
   <!-- CLI_USAGE_WAYS_START -->
