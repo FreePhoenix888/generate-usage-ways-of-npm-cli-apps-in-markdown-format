@@ -18,8 +18,6 @@ Generates the ways to use CLI utilities of the package
 ## Pre-requisites
 - Add the following to your README.md
   ```markdown
-  # Cli
-  ## Cli Usage Ways
   <!-- CLI_USAGE_WAYS_START -->
   <!-- CLI_USAGE_WAYS_END -->
   ```
